@@ -29,7 +29,7 @@ pipeline {
             -v "$PWD/backend:/workspace" \
             -w /workspace \
             node:22-bookworm \
-            sh -c "apt-get update -qq && apt-get install -y -qq python3 make g++ && npm install --build-from-source=sqlite3 && npm test"
+            sh -c "apt-get update -qq && apt-get install -y -qq python3 make g++ && rm -rf node_modules && npm ci --build-from-source=sqlite3 && npm test"
         '''
       }
     }
